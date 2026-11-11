@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MechAtlas | Machine Intelligence Platform</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <span class="logo-icon">M</span>
+            <span>Mech<span class="logo-highlight">Atlas</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#machines">Machines</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+        </div>
+
+        <a href="/create" class="nav-button">Create Manual ↗</a>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                <span class="status-dot"></span>
+                AI-POWERED MACHINE DOCUMENTATION
+            </div>
+
+            <h1>
+                Understand Every Machine.
+                <span>Master Every Mechanism.</span>
+            </h1>
+
+            <p>
+                Turn basic machine information into detailed,
+                easy-to-understand technical documentation.
+                Explore working principles, components,
+                maintenance and safety with MechAtlas.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/create" class="main-btn">
+                    Generate a Manual <span>↗</span>
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    Discover MechAtlas
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div>
+                    <strong>AI</strong>
+                    <span>Assisted documentation</span>
+                </div>
+
+                <div>
+                    <strong>16</strong>
+                    <span>Manual chapters</span>
+                </div>
+
+                <div>
+                    <strong>01</strong>
+                    <span>Simple starting point</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-caption">
+            <span>ENGINEERING / TECHNOLOGY / INTELLIGENCE</span>
+            <span>01 — MECH ATLAS</span>
+        </div>
+
+    </section>
+
+
+    <!-- MACHINE COLLECTION -->
+    <section class="machines-section" id="machines">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">EXPLORE THE ENGINEERING WORLD</span>
+                <h2>Machines. <span>Mechanisms.</span> Knowledge.</h2>
+            </div>
+
+            <p>
+                Discover the machines that power industries
+                and understand the technology behind them.
+            </p>
+        </div>
+
+
+        <div class="machine-grid">
+
+            <div class="machine-card">
+                <img
+                    src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=85"
+                    alt="Industrial engineering machinery">
+
+                <div class="machine-card-content">
+                    <span>01 / INDUSTRIAL SYSTEMS</span>
+                    <h3>Industrial Machines</h3>
+                    <p>Explore industrial equipment and mechanical systems.</p>
+                </div>
+            </div>
+
+
+            <div class="machine-card">
+                <img
+                    src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=900&q=85"
+                    alt="Factory manufacturing machinery">
+
+                <div class="machine-card-content">
+                    <span>02 / MANUFACTURING</span>
+                    <h3>Manufacturing Systems</h3>
+                    <p>Understand production equipment and automation.</p>
+                </div>
+            </div>
+
+
+            <div class="machine-card">
+                <img
+                    src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=85"
+                    alt="Mechanical engineering equipment">
+
+                <div class="machine-card-content">
+                    <span>03 / MECHANICAL SYSTEMS</span>
+                    <h3>Mechanical Equipment</h3>
+                    <p>Learn about components, mechanisms and operation.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="machine-bottom">
+            <span>FROM BASIC INFORMATION TO DETAILED KNOWLEDGE</span>
+            <a href="/create">Create your first manual ↗</a>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1100&q=85"
+                alt="Industrial manufacturing environment">
+
+            <div class="image-label">
+                <span>MECH</span>
+                <strong>ATLAS</strong>
+                <small>ENGINEERING KNOWLEDGE PLATFORM</small>
+            </div>
+        </div>
+
+
+        <div class="about-content">
+
+            <span class="section-label">ABOUT THE PLATFORM</span>
+
+            <h2>
+                Technical knowledge,
+                <span>made accessible.</span>
+            </h2>
+
+            <p>
+                MechAtlas is an AI-assisted machine documentation
+                platform designed to make technical information
+                easier to understand.
+            </p>
+
+            <p>
+                Users provide basic information about a machine.
+                The AI system uses that information to prepare
+                a structured manual covering its working principle,
+                components, operation, maintenance and safety.
+            </p>
+
+            <a href="/create" class="text-link">
+                Start exploring <span>↗</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading centered-heading">
+            <span class="section-label">WHAT MAKES MECHATLAS DIFFERENT?</span>
+
+            <h2>
+                Everything you need to
+                <span>understand a machine.</span>
+            </h2>
+
+            <p>
+                From a few basic details to a complete
+                structured technical manual.
+            </p>
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <div class="feature-icon">✦</div>
+                <h3>AI Manual Generation</h3>
+                <p>
+                    Generate detailed machine documentation
+                    from basic information.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <div class="feature-icon">⚙</div>
+                <h3>Working Principles</h3>
+                <p>
+                    Understand how machines work and
+                    how their components function.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <div class="feature-icon">⌁</div>
+                <h3>Maintenance & Safety</h3>
+                <p>
+                    Access organized maintenance guidance
+                    and important safety information.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <div class="feature-icon">▤</div>
+                <h3>Structured Documentation</h3>
+                <p>
+                    Read organized chapters, technical tables
+                    and troubleshooting information.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section">
+
+        <div class="cta-content">
+            <span class="section-label">YOUR ENGINEERING KNOWLEDGE STARTS HERE</span>
+
+            <h2>
+                Have a machine in mind?
+                <span>Let's understand it.</span>
+            </h2>
+
+            <p>
+                Enter a few basic details and generate
+                its technical documentation with MechAtlas.
+            </p>
+
+            <a href="/create" class="main-btn">
+                Create Your Machine Manual ↗
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">M</span>
+                    <span>Mech<span class="logo-highlight">Atlas</span></span>
+                </a>
+
+                <p>
+                    Making machine documentation
+                    simpler, smarter and accessible.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#machines">Machines</a>
+                <a href="#about">About</a>
+                <a href="/create">Create Manual</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 MechAtlas. All rights reserved.</span>
+            <span>BUILT FOR ENGINEERING KNOWLEDGE.</span>
+        </div>
+
+    </footer>
+
+</body>
+</html>

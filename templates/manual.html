@@ -1,0 +1,280 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ machine_name }} | MechAtlas Technical Manual</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="editorial-manual">
+
+    <!-- NAVIGATION -->
+    <header class="editorial-navbar no-print">
+        <a href="/" class="editorial-logo">
+            <span class="editorial-logo-icon">M</span>
+            MechAtlas<span class="logo-dot">.</span>
+        </a>
+
+        <span class="navbar-caption">ENGINEERING KNOWLEDGE LIBRARY</span>
+
+        <a href="/" class="editorial-home">← Home</a>
+    </header>
+
+
+    <main class="editorial-container">
+
+        <!-- ACTION BUTTONS -->
+        <div class="editorial-actions no-print">
+            <a href="/create" class="editorial-secondary-btn">
+                + Create Another Manual
+            </a>
+
+            <button onclick="window.print()" class="editorial-primary-btn">
+                ↓ Download as PDF
+            </button>
+        </div>
+
+
+        <!-- COVER PAGE -->
+        <section class="editorial-cover">
+
+            <div class="editorial-cover-top">
+                <div class="editorial-brand">
+                    <span class="brand-mark">M</span>
+                    <span>MechAtlas.</span>
+                </div>
+
+                <span class="document-series">
+                    TECHNICAL SERIES / 001
+                </span>
+            </div>
+
+            <div class="cover-decoration"></div>
+
+            <div class="editorial-cover-content">
+
+                <span class="editorial-eyebrow">
+                    ENGINEERING DOCUMENTATION
+                </span>
+
+                <h1>{{ machine_name }}</h1>
+
+                <div class="editorial-gold-line"></div>
+
+                <h2>Understanding the mechanism.</h2>
+
+                <p class="editorial-cover-description">
+                    A comprehensive technical and operational guide
+                    covering machine construction, working principles,
+                    applications and maintenance.
+                </p>
+
+            </div>
+
+            <div class="editorial-cover-details">
+
+                <div>
+                    <span>MANUFACTURER</span>
+                    <strong>{{ manufacturer or "Not provided" }}</strong>
+                </div>
+
+                <div>
+                    <span>MODEL NUMBER</span>
+                    <strong>{{ model_number or "Not provided" }}</strong>
+                </div>
+
+                <div>
+                    <span>DOCUMENT ID</span>
+                    <strong>MA-{{ machine_id }}</strong>
+                </div>
+
+            </div>
+
+            <div class="editorial-cover-footer">
+                <span>MECHAtlas AI DOCUMENTATION</span>
+                <span>MA / {{ machine_id }}</span>
+            </div>
+
+        </section>
+
+
+        <!-- MACHINE INFORMATION -->
+        <section class="editorial-info">
+
+            <div class="editorial-section-heading">
+                <span>01 / MACHINE PROFILE</span>
+                <h2>Machine Information</h2>
+                <p>A quick overview of the selected equipment.</p>
+            </div>
+
+            <div class="editorial-info-grid">
+
+                <div class="editorial-info-card">
+                    <span>MACHINE NAME</span>
+                    <strong>{{ machine_name }}</strong>
+                </div>
+
+                <div class="editorial-info-card">
+                    <span>MANUFACTURER</span>
+                    <strong>{{ manufacturer or "Not provided" }}</strong>
+                </div>
+
+                <div class="editorial-info-card">
+                    <span>MODEL NUMBER</span>
+                    <strong>{{ model_number or "Not provided" }}</strong>
+                </div>
+
+                <div class="editorial-info-card wide-info-card">
+                    <span>ADDITIONAL INFORMATION</span>
+                    <strong>{{ purpose or "Not provided" }}</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABLE OF CONTENTS -->
+        <section class="editorial-toc" id="contents">
+
+            <div class="editorial-section-heading">
+                <span>02 / DOCUMENT GUIDE</span>
+                <h2>Inside This Manual</h2>
+                <p>Explore the chapters and find the information you need.</p>
+            </div>
+
+            <ol id="toc-list" class="editorial-toc-list">
+                <li>Preparing your manual...</li>
+            </ol>
+
+        </section>
+
+
+        <!-- GENERATED MANUAL -->
+        <section class="editorial-document">
+
+            <div class="document-heading">
+                <span>MECHAtlas / TECHNICAL SERIES</span>
+                <h2>Technical & Operational Manual</h2>
+                <p>{{ machine_name }}</p>
+            </div>
+
+            <div class="editorial-manual-content" id="ai-manual-content">
+                {{ ai_manual_html | safe }}
+            </div>
+
+        </section>
+
+
+        <!-- DISCLAIMER -->
+        <section class="editorial-disclaimer">
+
+            <div class="disclaimer-symbol">!</div>
+
+            <div>
+                <span>IMPORTANT DOCUMENTATION NOTICE</span>
+
+                <h2>Use with care. Verify before operation.</h2>
+
+                <p>
+                    This manual is AI-generated for educational and
+                    informational purposes. Model-specific specifications,
+                    operating procedures and safety requirements must be
+                    verified using official manufacturer documentation.
+                    This document is not a certified replacement for the
+                    manufacturer's manual.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM ACTIONS -->
+        <div class="editorial-bottom-actions no-print">
+
+            <a href="/create" class="editorial-secondary-btn">
+                Create Another Manual
+            </a>
+
+            <button onclick="window.print()" class="editorial-primary-btn">
+                ↓ Download Manual as PDF
+            </button>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="editorial-footer">
+            <div class="editorial-logo">
+                MechAtlas<span class="logo-dot">.</span>
+            </div>
+
+            <p>Making machines easier to understand.</p>
+
+            <span>ENGINEERING KNOWLEDGE · POWERED BY AI</span>
+        </footer>
+
+    </main>
+
+
+    <!-- AUTOMATIC TABLE OF CONTENTS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const manual = document.getElementById("ai-manual-content");
+            const toc = document.getElementById("toc-list");
+
+            // Main chapters are generated as H2 headings.
+            const headings = manual.querySelectorAll("h2");
+
+            toc.innerHTML = "";
+
+            headings.forEach(function (heading, index) {
+
+                const id = "chapter-" + (index + 1);
+
+                heading.id = id;
+
+                const item = document.createElement("li");
+                const link = document.createElement("a");
+
+                const number = String(index + 1).padStart(2, "0");
+
+                link.href = "#" + id;
+                link.textContent = heading.textContent;
+
+                const chapterNumber = document.createElement("span");
+                chapterNumber.className = "toc-number";
+                chapterNumber.textContent = number;
+
+                item.appendChild(chapterNumber);
+                item.appendChild(link);
+
+                toc.appendChild(item);
+
+            });
+
+            if (headings.length === 0) {
+                toc.innerHTML = "<li>No chapters found.</li>";
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+
+

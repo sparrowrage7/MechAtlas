@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Manual | MechAtlas</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="create-body">
+
+    <header class="create-navbar">
+        <a href="/" class="create-logo">
+            <span class="logo-symbol">M</span>
+            Mech<span>Atlas</span>
+        </a>
+
+        <a href="/" class="home-link">← Back to Home</a>
+    </header>
+
+    <main class="create-wrapper">
+
+        <div class="create-intro">
+            <span class="intro-tag">✦ YOUR MACHINE, EXPLAINED</span>
+
+            <h1>
+                Every machine has a story.<br>
+                <span>Let's uncover it.</span>
+            </h1>
+
+            <p>
+                Tell us a little about your machine.
+                Our AI will transform your basic details
+                into a complete technical manual.
+            </p>
+        </div>
+
+        <section class="create-card">
+
+            <div class="card-heading">
+                <div>
+                    <span class="section-label">MACHINE INFORMATION</span>
+                    <h2>Let's get started!</h2>
+                    <p>Fill in the details you know.</p>
+                </div>
+
+                <div class="card-icon">⚙</div>
+            </div>
+
+            <form action="/generate" method="POST"
+                  class="pastel-machine-form">
+
+                <div class="form-group">
+                    <label for="machine_name">
+                        Machine Name <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="machine_name"
+                        name="machine_name"
+                        placeholder="e.g. Electric Water Pump"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="manufacturer">
+                            Manufacturer
+                            <small>Optional</small>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="manufacturer"
+                            name="manufacturer"
+                            placeholder="e.g. Kirloskar"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model_number">
+                            Model Number
+                            <small>Optional</small>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="model_number"
+                            name="model_number"
+                            placeholder="Enter model number"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="purpose">
+                        Additional Information
+                        <small>Optional</small>
+                    </label>
+
+                    <textarea
+                        id="purpose"
+                        name="purpose"
+                        rows="4"
+                        placeholder="What do you know about this machine? You can mention its purpose, working or components..."
+                    ></textarea>
+                </div>
+
+                <div class="form-note">
+                    <span>💡</span>
+                    <p>
+                        Don't know all the details? That's okay!
+                        Just enter the machine name and let MechAtlas do the rest.
+                    </p>
+                </div>
+
+                <button type="submit" class="pastel-submit">
+                    <span>Generate My Manual</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <p class="privacy-note">
+                    ✦ AI-powered technical documentation
+                </p>
+
+            </form>
+        </section>
+
+        <div class="bottom-caption">
+            <span>MECH</span>ATLAS · Making machines easier to understand.
+        </div>
+
+    </main>
+
+</body>
+</html>
