@@ -1,9 +1,12 @@
 
+import os
+import sqlite3
+
 from flask import Flask, render_template, request
 from ai_generator import generate_manual
-import sqlite3
 import markdown
 import bleach
+
 
 app = Flask(__name__)
 
@@ -13,8 +16,18 @@ app = Flask(__name__)
 # =====================================
 
 def get_db():
-    conn = sqlite3.connect("database.db")
+
+    # Local Windows database
+    if os.environ.get("VERCEL"):
+        db_path = "/tmp/mechatlas.db"
+
+    # Vercel temporary database
+    else:
+        db_path = "database.db"
+
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
+
     return conn
 
 
@@ -23,6 +36,7 @@ def get_db():
 # =====================================
 
 def create_table():
+
     conn = get_db()
 
     conn.execute("""
@@ -48,6 +62,7 @@ def create_table():
 
 @app.route("/")
 def home():
+
     return render_template("index.html")
 
 
@@ -57,6 +72,7 @@ def home():
 
 @app.route("/create")
 def create():
+
     return render_template("machine_form.html")
 
 
@@ -97,13 +113,16 @@ def generate():
         "safety", ""
     ).strip()
 
+
     # Check required machine name
 
     if not machine_name:
+
         return render_template(
             "machine_form.html",
             error="Please enter a machine name."
         ), 400
+
 
     # Prepare information for AI
 
@@ -117,18 +136,29 @@ Components: {components or "Not provided"}
 Safety Information: {safety or "Not provided"}
 """
 
+
     # Generate manual using Gemini AI
 
     try:
+
+        print("MechAtlas: Connecting to Gemini AI...")
+
         ai_manual = generate_manual(machine_details)
 
+        if not ai_manual:
+            raise ValueError("AI returned an empty manual.")
+
+        print("MechAtlas: Manual generated successfully.")
+
     except Exception as error:
+
         print("AI Generation Error:", error)
 
         return render_template(
             "machine_form.html",
             error="Manual generation failed. Please try again."
         ), 500
+
 
     # =====================================
     # CONVERT MARKDOWN INTO HTML
@@ -141,6 +171,7 @@ Safety Information: {safety or "Not provided"}
             "sane_lists"
         ]
     )
+
 
     # =====================================
     # SANITIZE GENERATED HTML
@@ -164,14 +195,29 @@ Safety Information: {safety or "Not provided"}
         strip=True
     )
 
+
     # =====================================
     # SAVE MACHINE INFORMATION TO DATABASE
     # =====================================
 
-    conn = get_db()
+    conn = None
 
-    cursor = conn.execute("""
-        INSERT INTO machines (
+    try:
+
+        conn = get_db()
+
+        cursor = conn.execute("""
+            INSERT INTO machines (
+                machine_name,
+                manufacturer,
+                model_number,
+                purpose,
+                working_principle,
+                components,
+                safety
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (
             machine_name,
             manufacturer,
             model_number,
@@ -179,22 +225,29 @@ Safety Information: {safety or "Not provided"}
             working_principle,
             components,
             safety
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (
-        machine_name,
-        manufacturer,
-        model_number,
-        purpose,
-        working_principle,
-        components,
-        safety
-    ))
+        ))
 
-    machine_id = cursor.lastrowid
+        machine_id = cursor.lastrowid
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+
+    except sqlite3.Error as error:
+
+        print("Database Error:", error)
+
+        if conn:
+            conn.rollback()
+
+        return (
+            "Manual generated, but database saving failed. "
+            "Please try again."
+        ), 500
+
+    finally:
+
+        if conn:
+            conn.close()
+
 
     # =====================================
     # DISPLAY FORMATTED MANUAL
@@ -221,8 +274,7 @@ Safety Information: {safety or "Not provided"}
 # RUN MECHATLAS
 # =====================================
 
+create_table()
+
 if __name__ == "__main__":
-
-    create_table()
-
     app.run(debug=True)
